@@ -20,3 +20,6 @@ BUILD_WORKER_DOCKERFILE:
 
 RUN_WORKER:
 	@docker run -it -t $(WORKER_IMAGE_TAG)
+
+BUILD_DOCKER_COMPOSE:
+	@docker-compose up

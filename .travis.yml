@@ -14,3 +14,8 @@ after_success:
   - docker build -t vgarrido/multi-server ./server
   - docker build -t vgarrido/multi-nginx ./nginx
   - docker build -t vgarrido/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push vgarrido/multi-client
+  - docker push vgarrido/multi-server
+  - docker push vgarrido/multi-worker
+  - docker push vgarrido/multi-nginx

@@ -1,0 +1,31 @@
+{
+  "AWSDockerrunVersion": 2,
+  "containerDDefinitions": [
+    {
+      "name": "client",
+      "image": "garridovic/multi-client",
+      "hostname": "client",
+      "essential": false
+    },
+    {
+      "name": "server",
+      "image": "garridovic/multi-server",
+      "hostname": "api",
+      "essential": false
+    },
+    {
+      "name": "worker",
+      "image": "garridovic/multi-worker",
+      "hostname": "worker",
+      "essential": false
+    },
+    {
+      "name": "nginx",
+      "image": "garridovic/multi-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappings": [{ "hostPort": 80, "containerPort": 80 }],
+      "links": ["client", "server"]
+    }
+  ]
+}

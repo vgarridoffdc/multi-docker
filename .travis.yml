@@ -19,3 +19,15 @@ after_success:
   - docker push garridovic/multi-server
   - docker push garridovic/multi-worker
   - docker push garridovic/multi-nginx
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "multi-complex"
+  env: "Multicomplex-env"
+  bucket_name: "elasticbeanstalk-us-east-2-981152371062"
+  bucket_path: "docker-multi"
+  on:
+      branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY

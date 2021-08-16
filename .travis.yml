@@ -4,18 +4,18 @@ services:
   - docker
 
 before_install:
-  - docker build -t vgarrido/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t garridovic/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true vgarrido/react-test npm test
+  - docker run -e CI=true garridovic/react-test npm test
 
 after_success:
-  - docker build -t vgarrido/multi-client ./client
-  - docker build -t vgarrido/multi-server ./server
-  - docker build -t vgarrido/multi-nginx ./nginx
-  - docker build -t vgarrido/multi-worker ./worker
+  - docker build -t garridovic/multi-client ./client
+  - docker build -t garridovic/multi-server ./server
+  - docker build -t garridovic/multi-nginx ./nginx
+  - docker build -t garridovic/multi-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push vgarrido/multi-client
-  - docker push vgarrido/multi-server
-  - docker push vgarrido/multi-worker
-  - docker push vgarrido/multi-nginx
+  - docker push garridovic/multi-client
+  - docker push garridovic/multi-server
+  - docker push garridovic/multi-worker
+  - docker push garridovic/multi-nginx

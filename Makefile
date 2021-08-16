@@ -1,7 +1,7 @@
 
-CLIENT_IMAGE_TAG = "vgarrido:complex-client"
-SERVER_IMAGE_TAG = "vgarrido:complex-server"
-WORKER_IMAGE_TAG = "vgarrido:complex-worker"
+CLIENT_IMAGE_TAG = "garridovic:complex-client"
+SERVER_IMAGE_TAG = "garridovic:complex-server"
+WORKER_IMAGE_TAG = "garridovic:complex-worker"
 
 BUILD_CLIENT_DOCKERFILE:
 	@docker build -f ./client/Dockerfile.dev ./client/. -t $(CLIENT_IMAGE_TAG)

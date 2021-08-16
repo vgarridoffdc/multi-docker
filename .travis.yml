@@ -1,0 +1,16 @@
+sudo: required
+language: generic
+services:
+  - docker
+
+before_install:
+  - docker build -t vgarrido/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true vgarrido/react-test npm test
+
+after_success:
+  - docker build -t vgarrido/multi-client ./client
+  - docker build -t vgarrido/multi-server ./server
+  - docker build -t vgarrido/multi-nginx ./nginx
+  - docker build -t vgarrido/multi-worker ./worker

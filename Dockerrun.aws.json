@@ -1,6 +1,6 @@
 {
   "AWSEBDockerrunVersion": 2,
-  "containerDDefinitions": [
+  "containerDefinitions": [
     {
       "name": "client",
       "image": "garridovic/multi-client",
